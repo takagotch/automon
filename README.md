@@ -23,6 +23,26 @@ public class AutomonPropertiseLoader {
   }
   
   
+  
+  private void replaceWithSystemProps(Properties properties) {
+    properties.putAll(sysProperty.getProperties());
+  }
+  
+  Properties getDefaults() {
+    Properties defaults = new Properties();
+    defaults.put(CONFIGURED_OPEN_MON, EMPTY_DEFULT_OPEN_MON);
+    return defaults;
+  }
+  
+  static class SysProperty {
+    public String getProperty(String key) {
+      return System.getProperty(key);
+    }
+    
+    public Properties getProperties() {
+      return System.getProperties();
+    }
+  }
 }
 
 ```
